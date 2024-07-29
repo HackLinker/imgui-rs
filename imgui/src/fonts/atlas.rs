@@ -26,7 +26,7 @@ bitflags! {
 
 /// A font identifier
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct FontId(pub(crate) *const Font);
+pub struct FontId(pub *const Font);
 
 /// A font atlas that builds a single texture
 #[repr(C)]
