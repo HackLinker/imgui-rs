@@ -28,6 +28,12 @@ bitflags! {
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub struct FontId(pub *const Font);
 
+impl Default for FontId {
+    fn default() -> FontId {
+        FontId(ptr::null())
+    }
+}
+
 /// A font atlas that builds a single texture
 #[repr(C)]
 pub struct FontAtlas {
