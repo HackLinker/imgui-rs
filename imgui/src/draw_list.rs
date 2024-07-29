@@ -15,7 +15,7 @@
 
 use bitflags::bitflags;
 
-use crate::{math::MintVec2, ImColor32};
+use crate::{math::MintVec2, FontId, ImColor32};
 use sys::{ImDrawCmd, ImDrawList};
 
 use super::Ui;
@@ -352,6 +352,26 @@ impl<'ui> DrawListMut<'ui> {
                 col.into().into(),
                 start,
                 end,
+            )
+        }
+    }
+    #[doc(hidden)]
+    pub fn add_text_font(&self,font:FontId,font_size:f32,pos: impl Into<MintVec2>,col: impl Into<ImColor32>,text: impl AsRef<str>){ 
+        use std::os::raw::c_char;
+        let text = text.as_ref();
+        unsafe {
+            let start = text.as_ptr() as *const c_char;
+            let end = (start as usize + text.len()) as *const c_char;
+            sys::ImDrawList_AddText_FontPtr(
+                self.draw_list,
+                font.0 as _,
+                font_size,
+                pos.into().into(),
+                col.into().into(),
+                start,
+                end,
+                0f32,
+                std::ptr::null(),
             )
         }
     }
