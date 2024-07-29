@@ -33,6 +33,8 @@ impl Default for FontId {
         FontId(ptr::null())
     }
 }
+unsafe impl Send for FontId {}
+unsafe impl Sync for FontId {}
 
 /// A font atlas that builds a single texture
 #[repr(C)]
