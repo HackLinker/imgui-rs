@@ -72,8 +72,8 @@ enum DrawListType {
 /// The program will panic on creating a second instance.
 pub struct DrawListMut<'ui> {
     draw_list_type: DrawListType,
-    draw_list: *mut ImDrawList,
-    _phantom: PhantomData<&'ui Ui>,
+    pub draw_list: *mut ImDrawList,
+    pub _phantom: PhantomData<&'ui Ui>,
 }
 
 // Lock for each variant of draw list. See https://github.com/imgui-rs/imgui-rs/issues/488
