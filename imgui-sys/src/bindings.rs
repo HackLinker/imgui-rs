@@ -85,7 +85,18 @@ where
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ImDrawListSharedData {
-    _unused: [u8; 0],
+    pub TexUvWhitePixel: ImVec2,
+    pub Font: *mut ImFont,
+    pub FontSize: f32,
+    pub CurveTessellationTol: f32,
+    pub CircleSegmentMaxError: f32,
+    pub ClipRectFullscreen: ImVec4,
+    pub InitialFlags: ImDrawListFlags,
+    pub TempBuffer: ImVector_ImVec2,
+    pub ArcFastVtx: [ImVec2; 48usize],
+    pub ArcFastRadiusCutoff: f32,
+    pub CircleSegmentCounts: [ImU8; 64usize],
+    pub TexUvLines: *const ImVec4,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
