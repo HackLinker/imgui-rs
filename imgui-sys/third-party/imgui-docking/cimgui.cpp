@@ -16,8 +16,8 @@
 #include "./imgui/misc/freetype/imgui_freetype.h"
 #endif
 #include "./imgui/imgui_internal.h"
+#include "./imgui/imgui_impl_win32.h"
 #include "cimgui.h"
-
 
 
 CIMGUI_API ImVec2* ImVec2_ImVec2_Nil(void)
@@ -5401,5 +5401,49 @@ CIMGUI_API void ImGuiPlatformIO_Set_Platform_GetWindowSize(ImGuiPlatformIO* plat
     storage.Platform_GetWindowSize = user_callback;
     platform_io->Platform_GetWindowSize = &Platform_GetWindowSize_hook;
 }
-
+CIMGUI_API void ImGui_Win32_Init(void* hwnd)
+{
+    ImGui_ImplWin32_Init(hwnd);
+}
+CIMGUI_API void ImGui_Win32_Shutdown()
+{
+    ImGui_ImplWin32_Shutdown();
+}
+CIMGUI_API void ImGui_Win32_NewFrame()
+{
+    ImGui_ImplWin32_NewFrame();
+}
+//ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+CIMGUI_API LRESULT ImGui_Win32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    return ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
+}
+//IMGUI_IMPL_API bool     ImGui_ImplWin32_Init(void* hwnd);
+//IMGUI_IMPL_API void     ImGui_ImplWin32_Shutdown();
+//IMGUI_IMPL_API void     ImGui_ImplWin32_NewFrame();
+//
+//// Win32 message handler your application need to call.
+//// - Intentionally commented out in a '#if 0' block to avoid dragging dependencies on <windows.h> from this helper.
+//// - You should COPY the line below into your .cpp code to forward declare the function and then you can call it.
+//// - Call from your application's message handler. Keep calling your message handler unless this function returns TRUE.
+//
+//#if 0
+//extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+//#endif
+//
+//// DPI-related helpers (optional)
+//// - Use to enable DPI awareness without having to create an application manifest.
+//// - Your own app may already do this via a manifest or explicit calls. This is mostly useful for our examples/ apps.
+//// - In theory we could call simple functions from Windows SDK such as SetProcessDPIAware(), SetProcessDpiAwareness(), etc.
+////   but most of the functions provided by Microsoft require Windows 8.1/10+ SDK at compile time and Windows 8/10+ at runtime,
+////   neither we want to require the user to have. So we dynamically select and load those functions to avoid dependencies.
+//IMGUI_IMPL_API void     ImGui_ImplWin32_EnableDpiAwareness();
+//IMGUI_IMPL_API float    ImGui_ImplWin32_GetDpiScaleForHwnd(void* hwnd);       // HWND hwnd
+//IMGUI_IMPL_API float    ImGui_ImplWin32_GetDpiScaleForMonitor(void* monitor); // HMONITOR monitor
+//
+//// Transparency related helpers (optional) [experimental]
+//// - Use to enable alpha compositing transparency with the desktop.
+//// - Use together with e.g. clearing your framebuffer with zero-alpha.
+//IMGUI_IMPL_API void     ImGui_ImplWin32_EnableAlphaCompositing(void* hwnd);   // HWND hwnd
 #endif
+

@@ -5,7 +5,7 @@ const DEFINES: &[(&str, Option<&str>)] = &[
     ("IMGUI_USE_WCHAR32", None),
     // Disabled due to linking issues
     ("CIMGUI_NO_EXPORT", None),
-    ("IMGUI_DISABLE_WIN32_FUNCTIONS", None),
+    // ("IMGUI_DISABLE_WIN32_FUNCTIONS", None),
     ("IMGUI_DISABLE_OSX_FUNCTIONS", None),
 ];
 

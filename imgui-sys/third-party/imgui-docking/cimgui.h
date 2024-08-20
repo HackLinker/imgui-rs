@@ -6,6 +6,7 @@
 #define CIMGUI_INCLUDED
 #include <stdio.h>
 #include <stdint.h>
+#include <Windows.h>
 #if defined _WIN32 || defined __CYGWIN__
     #ifdef CIMGUI_NO_EXPORT
         #define API
@@ -4412,7 +4413,10 @@ CIMGUI_API void ImVector_ImWchar_destroy(ImVector_ImWchar* self);
 CIMGUI_API void ImVector_ImWchar_Init(ImVector_ImWchar* p);
 CIMGUI_API void ImVector_ImWchar_UnInit(ImVector_ImWchar* p);
 
-
+CIMGUI_API void ImGui_Win32_Init(void* hwnd);
+CIMGUI_API void ImGui_Win32_Shutdown();
+CIMGUI_API void ImGui_Win32_NewFrame();
+CIMGUI_API LRESULT ImGui_Win32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 #endif //CIMGUI_INCLUDED
 
 

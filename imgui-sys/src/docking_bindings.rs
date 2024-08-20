@@ -10820,3 +10820,23 @@ extern "C" {
 extern "C" {
     pub fn ImGuiTextBuffer_appendf(buffer: *mut ImGuiTextBuffer, fmt: *const cty::c_char, ...);
 }
+
+
+
+extern "C" {
+    pub fn ImGui_Win32_Init(hwnd: *mut cty::c_void);
+}
+extern "C" {
+    pub fn ImGui_Win32_Shutdown();
+}
+extern "C" {
+    pub fn ImGui_Win32_NewFrame();
+}
+extern "C" {
+    pub fn ImGui_Win32_WndProcHandler(
+        hWnd: *mut cty::c_void,
+        msg: cty::c_uint,
+        wParam: cty::c_uint,
+        lParam: cty::c_uint,
+    ) -> cty::c_long;
+}
