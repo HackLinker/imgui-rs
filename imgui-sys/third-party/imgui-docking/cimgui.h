@@ -4417,6 +4417,13 @@ CIMGUI_API void ImGui_Win32_Init(void* hwnd);
 CIMGUI_API void ImGui_Win32_Shutdown();
 CIMGUI_API void ImGui_Win32_NewFrame();
 CIMGUI_API LRESULT ImGui_Win32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+CIMGUI_API bool ImGui_DX11_Init(void* device, void* device_context);
+CIMGUI_API void ImGui_DX11_Shutdown();
+CIMGUI_API void ImGui_DX11_NewFrame();
+CIMGUI_API void ImGui_DX11_RenderDrawData(ImDrawData* draw_data);
+CIMGUI_API void ImGui_DX11_InvalidateDeviceObjects();
+CIMGUI_API bool ImGui_DX11_CreateDeviceObjects();
 #endif //CIMGUI_INCLUDED
 
 

@@ -10840,3 +10840,28 @@ extern "C" {
         lParam: cty::c_uint,
     ) -> cty::c_long;
 }
+
+
+extern "C" {
+    pub fn ImGui_DX11_Init(device: *mut cty::c_void, device_context: *mut cty::c_void) -> bool;
+}
+
+extern "C" {
+    pub fn ImGui_DX11_Shutdown();
+}
+
+extern "C" {
+    pub fn ImGui_DX11_NewFrame();
+}
+
+extern "C" {
+    pub fn ImGui_DX11_RenderDrawData(draw_data: *mut ImDrawData);
+}
+
+extern "C" {
+    pub fn ImGui_DX11_InvalidateDeviceObjects();
+}
+
+extern "C" {
+    pub fn ImGui_DX11_CreateDeviceObjects() -> bool;
+}
