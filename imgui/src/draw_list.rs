@@ -375,7 +375,24 @@ impl<'ui> DrawListMut<'ui> {
             )
         }
     }
-
+    #[doc(hidden)]
+    pub fn path_clear(&self){
+        unsafe{
+            sys::ImDrawList_PathClear(self.draw_list);
+        }
+    }
+    #[doc(hidden)]
+    pub fn path_arc_to(&self,center: impl Into<MintVec2>,radius:f32,a_min:f32,a_max:f32,segments: i32){
+        unsafe{
+            sys::ImDrawList_PathArcTo(self.draw_list,center.into().into(),radius,a_min,a_max,segments);
+        }
+    }
+    #[doc(hidden)]
+    pub fn path_stroke(&self,col: impl Into<ImColor32>,closed:bool,thickness:f32){
+        unsafe{
+            sys::ImDrawList_PathStroke(self.draw_list,col.into().into(),closed,thickness);
+        }
+    }
     /// Returns a Bezier curve stretching from `pos0` to `pos1`, whose
     /// curvature is defined by `cp0` and `cp1`.
     #[doc(alias = "AddBezier", alias = "AddBezierCubic")]
