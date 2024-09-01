@@ -388,9 +388,9 @@ impl<'ui> DrawListMut<'ui> {
         }
     }
     #[doc(hidden)]
-    pub fn path_stroke(&self,col: impl Into<ImColor32>,closed:bool,thickness:f32){
+    pub fn path_stroke(&self,col: impl Into<ImColor32>,closed:i32,thickness:f32){
         unsafe{
-            sys::ImDrawList_PathStroke(self.draw_list,col.into().into(),closed,thickness);
+            sys::ImDrawList_PathStroke(self.draw_list,col.into().into(), closed,thickness);
         }
     }
     /// Returns a Bezier curve stretching from `pos0` to `pos1`, whose
